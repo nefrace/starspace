@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwjf8f36u4nc3"]
+
+[ext_resource type="Script" path="res://Entities/Player/player.gd" id="1_gwo65"]
+[ext_resource type="Texture2D" uid="uid://4kgq4g3gx0ns" path="res://Entities/Player/player_ship.png" id="1_lfy1u"]
+[ext_resource type="Texture2D" uid="uid://cfppoax3gspxt" path="res://Entities/Player/player_cross.png" id="2_lmnb4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fi72f"]
+radius = 6.0
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_gwo65")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_lfy1u")
+hframes = 8
+
+[node name="PlayerCross" type="Sprite2D" parent="Sprite"]
+position = Vector2(26, 0)
+texture = ExtResource("2_lmnb4")
+
+[node name="RotatingCenter" type="Node2D" parent="Sprite"]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite/RotatingCenter"]
+position = Vector2(26, 0)
+remote_path = NodePath("../../PlayerCross")
+update_rotation = false
+update_scale = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fi72f")

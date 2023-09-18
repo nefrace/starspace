@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://gmbo34pgy1rv"]
+
+[ext_resource type="PackedScene" uid="uid://dwjf8f36u4nc3" path="res://player.tscn" id="1_q4ixd"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_q4ixd")]
+position = Vector2(78, 56)
+ROTATION_SPEED = 400.0
+ROTATION_ACCELERATION = 1000.0
+ROTATION_DECCELERATION = 1500.0

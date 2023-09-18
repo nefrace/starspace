@@ -1,11 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://gmbo34pgy1rv"]
+[gd_scene load_steps=3 format=3 uid="uid://gmbo34pgy1rv"]
 
+[ext_resource type="Texture2D" uid="uid://cjckyw74v6px3" path="res://icon.svg" id="1_06gos"]
 [ext_resource type="PackedScene" uid="uid://dwjf8f36u4nc3" path="res://player.tscn" id="1_q4ixd"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(31, 30)
+scale = Vector2(0.224755, 0.224755)
+texture = ExtResource("1_06gos")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(127, 92)
+scale = Vector2(0.224755, 0.224755)
+texture = ExtResource("1_06gos")
+
+[node name="Icon3" type="Sprite2D" parent="."]
+position = Vector2(144, 26)
+scale = Vector2(0.224755, 0.224755)
+texture = ExtResource("1_06gos")
+
+[node name="Icon4" type="Sprite2D" parent="."]
+position = Vector2(36, 97)
+scale = Vector2(0.224755, 0.224755)
+texture = ExtResource("1_06gos")
+
+[node name="Icon5" type="Sprite2D" parent="."]
+position = Vector2(91, 19)
+scale = Vector2(0.224755, 0.224755)
+texture = ExtResource("1_06gos")
 
 [node name="Player" parent="." instance=ExtResource("1_q4ixd")]
 position = Vector2(78, 56)
 ROTATION_SPEED = 400.0
 ROTATION_ACCELERATION = 1000.0
 ROTATION_DECCELERATION = 1500.0
+
+[node name="Camera2D" type="Camera2D" parent="Player"]

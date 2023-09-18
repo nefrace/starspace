@@ -1,39 +1,58 @@
-[gd_scene load_steps=3 format=3 uid="uid://gmbo34pgy1rv"]
+[gd_scene load_steps=4 format=3 uid="uid://gmbo34pgy1rv"]
 
-[ext_resource type="Texture2D" uid="uid://cjckyw74v6px3" path="res://icon.svg" id="1_06gos"]
-[ext_resource type="PackedScene" uid="uid://dwjf8f36u4nc3" path="res://player.tscn" id="1_q4ixd"]
+[ext_resource type="PackedScene" uid="uid://dwjf8f36u4nc3" path="res://Entities/Player/player.tscn" id="1_q4ixd"]
+[ext_resource type="Texture2D" uid="uid://tulmpn4rv2hj" path="res://gfx/background.png" id="1_xcrb8"]
+[ext_resource type="PackedScene" uid="uid://bwfubn1xukra5" path="res://Entities/Asteroid/Asteroid.tscn" id="2_skwat"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(31, 30)
-scale = Vector2(0.224755, 0.224755)
-texture = ExtResource("1_06gos")
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_base_scale = Vector2(0.5, 0.5)
 
-[node name="Icon2" type="Sprite2D" parent="."]
-position = Vector2(127, 92)
-scale = Vector2(0.224755, 0.224755)
-texture = ExtResource("1_06gos")
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(160, 144)
 
-[node name="Icon3" type="Sprite2D" parent="."]
-position = Vector2(144, 26)
-scale = Vector2(0.224755, 0.224755)
-texture = ExtResource("1_06gos")
-
-[node name="Icon4" type="Sprite2D" parent="."]
-position = Vector2(36, 97)
-scale = Vector2(0.224755, 0.224755)
-texture = ExtResource("1_06gos")
-
-[node name="Icon5" type="Sprite2D" parent="."]
-position = Vector2(91, 19)
-scale = Vector2(0.224755, 0.224755)
-texture = ExtResource("1_06gos")
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("1_xcrb8")
+centered = false
 
 [node name="Player" parent="." instance=ExtResource("1_q4ixd")]
 position = Vector2(78, 56)
-ROTATION_SPEED = 400.0
-ROTATION_ACCELERATION = 1000.0
-ROTATION_DECCELERATION = 1500.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Asteroid" parent="." instance=ExtResource("2_skwat")]
+position = Vector2(204, 130)
+
+[node name="Asteroid2" parent="." instance=ExtResource("2_skwat")]
+position = Vector2(181, 75)
+
+[node name="Asteroid3" parent="." instance=ExtResource("2_skwat")]
+position = Vector2(146, -2)
+
+[node name="Asteroid4" parent="." instance=ExtResource("2_skwat")]
+position = Vector2(5, -23)
+
+[node name="Asteroid5" parent="." instance=ExtResource("2_skwat")]
+position = Vector2(-75, 71)
+
+[node name="Asteroid6" parent="." instance=ExtResource("2_skwat")]
+position = Vector2(0, 181)
+
+[node name="Asteroid7" parent="." instance=ExtResource("2_skwat")]
+position = Vector2(30, 110)
+
+[node name="Asteroid8" parent="." instance=ExtResource("2_skwat")]
+position = Vector2(119, 167)
+
+[node name="Asteroid9" parent="." instance=ExtResource("2_skwat")]
+position = Vector2(236, 6)
+
+[node name="Asteroid10" parent="." instance=ExtResource("2_skwat")]
+position = Vector2(55, -2)
+
+[node name="Asteroid11" parent="." instance=ExtResource("2_skwat")]
+position = Vector2(-67, 147)
+
+[node name="Asteroid12" parent="." instance=ExtResource("2_skwat")]
+position = Vector2(-67, 147)

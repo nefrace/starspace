@@ -1,19 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwjf8f36u4nc3"]
+[gd_scene load_steps=8 format=3 uid="uid://dwjf8f36u4nc3"]
 
 [ext_resource type="Script" path="res://Entities/Player/player.gd" id="1_gwo65"]
 [ext_resource type="Texture2D" uid="uid://4kgq4g3gx0ns" path="res://Entities/Player/player_ship.png" id="1_lfy1u"]
 [ext_resource type="Texture2D" uid="uid://cfppoax3gspxt" path="res://Entities/Player/player_cross.png" id="2_lmnb4"]
+[ext_resource type="PackedScene" uid="uid://8u74xi065c2d" path="res://Entities/Bullet/PlayerBullet.tscn" id="2_sv84r"]
+[ext_resource type="Script" path="res://Scripts/Sprite8.gd" id="3_lynoi"]
+[ext_resource type="Script" path="res://addons/easy_velocity_vector_display/vectordisplay2D.gd" id="4_l875n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fi72f"]
 radius = 6.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shoot_points")]
 motion_mode = 1
 script = ExtResource("1_gwo65")
+shoot_points = [NodePath("Sprite/RotatingCenter/ShootL"), NodePath("Sprite/RotatingCenter/ShootR")]
+projectile = ExtResource("2_sv84r")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_lfy1u")
 hframes = 8
+script = ExtResource("3_lynoi")
 
 [node name="PlayerCross" type="Sprite2D" parent="Sprite"]
 position = Vector2(26, 0)
@@ -27,5 +33,17 @@ remote_path = NodePath("../../PlayerCross")
 update_rotation = false
 update_scale = false
 
+[node name="ShootL" type="Node2D" parent="Sprite/RotatingCenter"]
+position = Vector2(3, -5)
+
+[node name="ShootR" type="Node2D" parent="Sprite/RotatingCenter"]
+position = Vector2(3, 4)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_fi72f")
+
+[node name="VectorDisplay2D" type="Node2D" parent="."]
+visible = false
+script = ExtResource("4_l875n")
+target = NodePath("..")
+target_property = "velocity"

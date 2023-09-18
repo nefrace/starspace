@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://8u74xi065c2d"]
+
+[ext_resource type="PackedScene" uid="uid://cloka06h073qs" path="res://Entities/Bullet/Bullet.tscn" id="1_34rsr"]
+
+[node name="Bullet" instance=ExtResource("1_34rsr")]
+collision_layer = 0
+collision_mask = 2

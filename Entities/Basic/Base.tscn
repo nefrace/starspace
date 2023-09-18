@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://de70k6fiqqb47"]
+
+[ext_resource type="Script" path="res://Entities/Basic/Base.gd" id="1_rixfg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jroup"]
+radius = 8.0
+
+[node name="Base" type="CharacterBody2D" groups=["colliders"]]
+motion_mode = 1
+script = ExtResource("1_rixfg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jroup")

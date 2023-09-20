@@ -30,9 +30,6 @@ hframes = 3
 shape = SubResource("CircleShape2D_u0ic4")
 debug_color = Color(0.666667, 0.509804, 0.129412, 0.419608)
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-rect = Rect2(-20, -20, 40, 40)
-
 [node name="RailFieldArea" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 8

@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var direction: float = 0.0
 @export var speed: float = 100.0
 @export var parent: Node2D
+@export var lifetime: float = 2.0
 
 var explosion = preload("res://Entities/FX/Explosion/Explosion.tscn")
 
@@ -13,6 +14,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	lifetime -= delta
+	if lifetime <= 0:
+		queue_free()
 	var collision := move_and_collide(velocity * delta)
 	if collision:
 		var collider := collision.get_collider()

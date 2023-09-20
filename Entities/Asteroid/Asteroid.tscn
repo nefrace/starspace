@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwfubn1xukra5"]
+[gd_scene load_steps=7 format=3 uid="uid://bwfubn1xukra5"]
 
 [ext_resource type="Script" path="res://Entities/Asteroid/Asteroid.gd" id="1_pfjhc"]
 [ext_resource type="Texture2D" uid="uid://cgisfc475fymq" path="res://Entities/Asteroid/asteroids.png" id="2_6tbie"]
@@ -11,6 +11,9 @@ time = 0.3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u0ic4"]
 radius = 11.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndcka"]
+size = Vector2(26, 28)
 
 [node name="Asteroid" type="CharacterBody2D"]
 collision_layer = 3
@@ -29,3 +32,14 @@ debug_color = Color(0.666667, 0.509804, 0.129412, 0.419608)
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 rect = Rect2(-20, -20, 40, 40)
+
+[node name="RailFieldArea" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RailFieldArea"]
+shape = SubResource("RectangleShape2D_ndcka")
+
+[connection signal="area_entered" from="RailFieldArea" to="." method="_on_rail_field_area_area_entered"]
+[connection signal="area_exited" from="RailFieldArea" to="." method="_on_rail_field_area_area_exited"]

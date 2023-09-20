@@ -1,10 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://gmbo34pgy1rv"]
+[gd_scene load_steps=6 format=3 uid="uid://gmbo34pgy1rv"]
 
 [ext_resource type="PackedScene" uid="uid://dwjf8f36u4nc3" path="res://Entities/Player/player.tscn" id="1_q4ixd"]
 [ext_resource type="Texture2D" uid="uid://tulmpn4rv2hj" path="res://gfx/background.png" id="1_xcrb8"]
 [ext_resource type="PackedScene" uid="uid://bwfubn1xukra5" path="res://Entities/Asteroid/Asteroid.tscn" id="2_skwat"]
+[ext_resource type="PackedScene" uid="uid://73gnola5a1iq" path="res://Entities/PortalFrame/PortalFrame.tscn" id="4_mi7q7"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_75moq"]
+normal = Vector2(1, 0)
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Bounds" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
+shape = SubResource("WorldBoundaryShape2D_75moq")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Bounds"]
+rotation = 1.57079
+shape = SubResource("WorldBoundaryShape2D_75moq")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(480, 0)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_75moq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(0, 432)
+rotation = -1.57079
+shape = SubResource("WorldBoundaryShape2D_75moq")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_base_scale = Vector2(0.5, 0.5)
@@ -17,42 +40,63 @@ texture = ExtResource("1_xcrb8")
 centered = false
 
 [node name="Player" parent="." instance=ExtResource("1_q4ixd")]
-position = Vector2(78, 56)
+position = Vector2(222, 55)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = 0
+limit_top = 0
+limit_right = 480
+limit_bottom = 432
 
 [node name="Asteroid" parent="." instance=ExtResource("2_skwat")]
-position = Vector2(204, 130)
+position = Vector2(99, 72)
+random_start = false
+initial_velocity = Vector2(36.495, 0)
 
 [node name="Asteroid2" parent="." instance=ExtResource("2_skwat")]
-position = Vector2(181, 75)
+position = Vector2(128, 118)
+random_start = false
+initial_velocity = Vector2(43.725, 0)
 
 [node name="Asteroid3" parent="." instance=ExtResource("2_skwat")]
-position = Vector2(146, -2)
+position = Vector2(86, 169)
+random_start = false
+initial_velocity = Vector2(43.725, 0)
 
 [node name="Asteroid4" parent="." instance=ExtResource("2_skwat")]
-position = Vector2(5, -23)
+position = Vector2(86, 169)
+random_start = false
+initial_velocity = Vector2(41.015, 0)
 
 [node name="Asteroid5" parent="." instance=ExtResource("2_skwat")]
-position = Vector2(-75, 71)
+position = Vector2(154, 223)
+random_start = false
+initial_velocity = Vector2(60.855, 0)
 
 [node name="Asteroid6" parent="." instance=ExtResource("2_skwat")]
-position = Vector2(0, 181)
+position = Vector2(89, 221)
+random_start = false
+initial_velocity = Vector2(34.54, 0)
 
 [node name="Asteroid7" parent="." instance=ExtResource("2_skwat")]
-position = Vector2(30, 110)
+position = Vector2(350, 58)
+random_start = false
+initial_velocity = Vector2(-34.54, 0)
 
 [node name="Asteroid8" parent="." instance=ExtResource("2_skwat")]
-position = Vector2(119, 167)
+position = Vector2(308, 93)
+random_start = false
+initial_velocity = Vector2(-31.24, 0)
 
 [node name="Asteroid9" parent="." instance=ExtResource("2_skwat")]
-position = Vector2(236, 6)
+position = Vector2(291, 163)
+random_start = false
+initial_velocity = Vector2(-55.08, 0)
 
 [node name="Asteroid10" parent="." instance=ExtResource("2_skwat")]
-position = Vector2(55, -2)
+position = Vector2(301, 217)
+random_start = false
+initial_velocity = Vector2(-55.08, 0)
 
-[node name="Asteroid11" parent="." instance=ExtResource("2_skwat")]
-position = Vector2(-67, 147)
-
-[node name="Asteroid12" parent="." instance=ExtResource("2_skwat")]
-position = Vector2(-67, 147)
+[node name="PortalFrame" parent="." instance=ExtResource("4_mi7q7")]
+position = Vector2(216, 14)

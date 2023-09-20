@@ -13,6 +13,11 @@ radius = 6.0
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shoot_points")]
 motion_mode = 1
 script = ExtResource("1_gwo65")
+max_thrust = 300.0
+thrust_acceleration = 600.0
+speed = 100.0
+rotation_acceleration = 8000.0
+rotation_decceleration = 8000.0
 shoot_points = [NodePath("Sprite/RotatingCenter/ShootL"), NodePath("Sprite/RotatingCenter/ShootR")]
 projectile = ExtResource("2_sv84r")
 

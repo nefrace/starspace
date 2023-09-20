@@ -11,7 +11,7 @@ func _physics_process(delta):
 	var collided: bool = move_and_slide()
 	if collided:
 		var collision: KinematicCollision2D = get_last_slide_collision()
-		var collider: CharacterBody2D = collision.get_collider()
+		var collider: PhysicsBody2D = collision.get_collider()
 		if collider.has_method("react_to_hit"):
 			collider.react_to_hit(self)
 		if collider.is_in_group("colliders"):

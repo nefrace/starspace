@@ -5,6 +5,8 @@ extends BaseEntity
 @export var random_max_velocity: float = 40.0
 @export var health: int = 3
 
+var slowdown: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if random_start:
@@ -14,10 +16,19 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if slowdown:
+		velocity = velocity.move_toward(Vector2.ZERO, 10.0 * delta)
 
 func receive_damage(dmg: int, from: Node2D):
 	health -= dmg
 	if health <= 0:
 		die()
 		queue_free()
+
+
+func _on_rail_field_area_area_entered(area):
+	slowdown = true
+
+
+func _on_rail_field_area_area_exited(area):
+	slowdown = false

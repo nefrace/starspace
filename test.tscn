@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://gmbo34pgy1rv"]
+[gd_scene load_steps=7 format=3 uid="uid://gmbo34pgy1rv"]
 
 [ext_resource type="PackedScene" uid="uid://dwjf8f36u4nc3" path="res://Entities/Player/player.tscn" id="1_q4ixd"]
+[ext_resource type="Script" path="res://Scripts/World.gd" id="1_wrich"]
 [ext_resource type="Texture2D" uid="uid://tulmpn4rv2hj" path="res://gfx/background.png" id="1_xcrb8"]
 [ext_resource type="PackedScene" uid="uid://bwfubn1xukra5" path="res://Entities/Asteroid/Asteroid.tscn" id="2_skwat"]
 [ext_resource type="PackedScene" uid="uid://73gnola5a1iq" path="res://Entities/PortalFrame/PortalFrame.tscn" id="4_mi7q7"]
@@ -8,7 +9,8 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_75moq"]
 normal = Vector2(1, 0)
 
-[node name="Node2D" type="Node2D"]
+[node name="World" type="Node2D"]
+script = ExtResource("1_wrich")
 
 [node name="Bounds" type="StaticBody2D" parent="."]
 collision_layer = 255

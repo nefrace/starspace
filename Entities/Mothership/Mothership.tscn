@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://cix1r1er1h2ka"]
+
+[ext_resource type="Texture2D" uid="uid://yjs6ydevjtst" path="res://Entities/Mothership/GiantShip.png" id="1_7aolk"]
+[ext_resource type="Script" path="res://Entities/Mothership/Mothership.gd" id="1_gi7hy"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u07dm"]
+lifetime_randomness = 0.35
+emission_shape = 3
+emission_box_extents = Vector3(1, 6.465, 1)
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 17.7
+initial_velocity_max = 33.05
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 5.25
+scale_max = 9.28
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 10.0
+turbulence_noise_speed = Vector3(-30, 0, 0)
+
+[node name="Mothership" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_gi7hy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7aolk")
+
+[node name="ThrustParticles" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(0.203922, 0.819608, 0.686275, 1)
+position = Vector2(0, -56)
+rotation = 1.57079
+amount = 48
+process_material = SubResource("ParticleProcessMaterial_u07dm")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(2, -59, 7, -54.4, 7, -50, 7, -38, 17, -38, 19, -36, 19, -28, 20, -27, 24.4, -27, 26, -25.4, 26, 4, 24, 6, 11, 6, 11, 26, 14, 29, 14, 48, 8, 53, 8, 56, 6, 59, -6, 59, -8, 56, -8, 53, -14, 48, -14, 29, -11, 26, -11, 6, -24, 6, -26, 4, -26, -25, -24, -27, -20, -27, -19, -28, -19, -36, -17, -38, -7, -38, -7, -50, -7, -54, -2, -59, -2, -62, 2, -62)

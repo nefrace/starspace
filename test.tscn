@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://gmbo34pgy1rv"]
+[gd_scene load_steps=9 format=3 uid="uid://gmbo34pgy1rv"]
 
 [ext_resource type="PackedScene" uid="uid://dwjf8f36u4nc3" path="res://Entities/Player/player.tscn" id="1_q4ixd"]
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_wrich"]
 [ext_resource type="Texture2D" uid="uid://tulmpn4rv2hj" path="res://gfx/background.png" id="1_xcrb8"]
 [ext_resource type="PackedScene" uid="uid://bwfubn1xukra5" path="res://Entities/Asteroid/Asteroid.tscn" id="2_skwat"]
 [ext_resource type="PackedScene" uid="uid://73gnola5a1iq" path="res://Entities/PortalFrame/PortalFrame.tscn" id="4_mi7q7"]
+[ext_resource type="PackedScene" uid="uid://2y7wo7x6egee" path="res://UI/UI.tscn" id="6_228jn"]
+[ext_resource type="PackedScene" uid="uid://cix1r1er1h2ka" path="res://Entities/Mothership/Mothership.tscn" id="6_ex3ys"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_75moq"]
 normal = Vector2(1, 0)
@@ -104,3 +106,6 @@ initial_velocity = Vector2(-55.08, 0)
 
 [node name="PortalFrame" parent="." instance=ExtResource("4_mi7q7")]
 position = Vector2(216, 14)
+mothership = ExtResource("6_ex3ys")
+
+[node name="Control" parent="." instance=ExtResource("6_228jn")]

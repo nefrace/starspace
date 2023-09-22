@@ -54,11 +54,14 @@ func _physics_process(delta):
 	var angle_rad = deg_to_rad(angle)
 	$Sprite.angle = angle
 	$Sprite/RotatingCenter.rotation = angle_rad
-	
+	$"Sprite/8RotCenter".global_rotation = $Sprite.rot8
+	print($Sprite.rot8_deg)
 	var acceleration = Input.get_axis("ui_down", "ui_up")
+	%ThrustParticles.emitting = bool(acceleration)
 	if acceleration:
 		thrust = move_toward(thrust, acceleration * max_thrust, thrust_acceleration * delta)
 		velocity += (Vector2.RIGHT * thrust).rotated(angle_rad) * delta
+		
 	else:
 		thrust = 0
 		velocity = velocity.move_toward(Vector2.ZERO, 80.0 * delta)

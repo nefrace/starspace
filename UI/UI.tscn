@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://2y7wo7x6egee"]
+
+[ext_resource type="Script" path="res://UI/UI.gd" id="1_bh32b"]
+[ext_resource type="Theme" uid="uid://bdsdemsjrustx" path="res://UI/theme.theme" id="1_xlmvw"]
+
+[node name="Control" type="CanvasLayer"]
+script = ExtResource("1_bh32b")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_xlmvw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 2
+
+[node name="VSeparator" type="VSeparator" parent="Control/Panel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Health" type="Label" parent="Control/Panel/HBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(0.160784, 0.121569, 0.137255, 1)
+layout_mode = 2
+text = "HEALTH"
+
+[node name="VSeparator2" type="VSeparator" parent="Control/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PortalTimerLabel" type="Label" parent="Control/Panel/HBoxContainer"]
+modulate = Color(0.160784, 0.121569, 0.137255, 1)
+layout_mode = 2
+text = "JUMP IN: "
+
+[node name="PortalTimer" type="Label" parent="Control/Panel/HBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(0.160784, 0.121569, 0.137255, 1)
+layout_mode = 2
+text = "30"

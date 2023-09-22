@@ -1,0 +1,38 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://cbyovb0r8lxht"
+path="res://.godot/imported/m3x6.ttf-4604327587184691663b1cad28f1784f.fontdata"
+
+[deps]
+
+source_file="res://gfx/m3x6.ttf"
+dest_files=["res://.godot/imported/m3x6.ttf-4604327587184691663b1cad28f1784f.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=0
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=41
+msdf_size=140
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=false
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0)
+}]
+language_support={}
+script_support={}
+opentype_features={}

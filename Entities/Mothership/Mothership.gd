@@ -20,3 +20,5 @@ func _physics_process(delta):
 			obj.die()
 			obj.queue_free()
 			Events.ship_hit_debris.emit()
+		if obj is Player:
+			obj.health = 0

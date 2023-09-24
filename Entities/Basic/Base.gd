@@ -12,13 +12,18 @@ func _physics_process(delta):
 	if collided:
 		var collision: KinematicCollision2D = get_last_slide_collision()
 		var collider: PhysicsBody2D = collision.get_collider()
+		react_to_hit(collider)
 		if collider.has_method("react_to_hit"):
 			collider.react_to_hit(self)
 		if collider.is_in_group("colliders"):
 			collider.velocity += velocity * collider.bounce_multiplier
 		velocity = velocity.reflect(collision.get_normal()) * -bounce_multiplier
+		$HitPlayer.play()
 
 func die():
 	for effect in death_effects:
 		if effect.has_method("effect"):
 			effect.effect(self)
+
+func react_to_hit(other: PhysicsBody2D):
+	pass

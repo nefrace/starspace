@@ -11,20 +11,24 @@ config_version=5
 [application]
 
 config/name="starspace"
-run/main_scene="res://GameScene.tscn"
+run/main_scene="res://Scenes/LogoScene/LogoScene.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/bg_color=Color(0.160784, 0.121569, 0.137255, 1)
 config/icon="res://icon.svg"
 
 [autoload]
 
-Events="*res://Scripts/GameEvents.gd"
-WM="*res://Scripts/WindowManager.gd"
+ConfigManager="*res://Autoload/ConfigManager.gd"
+Events="*res://Autoload/GameEvents.gd"
+WM="*res://Autoload/WindowManager.gd"
+SceneManager="*res://Autoload/SceneManager/SceneManager.tscn"
+MusicPlayer="*res://Autoload/MusicPlayer.gd"
 
 [display]
 
 window/size/viewport_width=160
 window/size/viewport_height=144
+window/size/initial_position_type=0
 window/stretch/mode="viewport"
 
 [editor]
@@ -38,6 +42,15 @@ enabled=PackedStringArray("res://addons/easy_velocity_vector_display/plugin.cfg"
 
 [input]
 
+ui_accept={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194309,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194310,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":32,"physical_keycode":0,"key_label":0,"unicode":32,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":90,"key_label":0,"unicode":122,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":88,"key_label":0,"unicode":120,"echo":false,"script":null)
+]
+}
 fire={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":90,"key_label":0,"unicode":122,"echo":false,"script":null)
@@ -48,6 +61,7 @@ fire={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=true
 environment/defaults/default_clear_color=Color(0.160784, 0.121569, 0.137255, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true

@@ -1,12 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://dt7tlv6264u0g"]
+[gd_scene load_steps=6 format=3 uid="uid://dt7tlv6264u0g"]
 
 [ext_resource type="PackedScene" uid="uid://bwlhptb81hef7" path="res://Entities/Debris/asteroid_mid.tscn" id="1_3jss7"]
+[ext_resource type="Script" path="res://Resources/Explosion.gd" id="2_twbiw"]
+[ext_resource type="AudioStream" uid="uid://5ji817f4qc2w" path="res://sfx/explosion1.wav" id="3_41h2h"]
+
+[sub_resource type="Resource" id="Resource_3fyxy"]
+script = ExtResource("2_twbiw")
+radius = 7.03
+time = 0.3
+sfx = ExtResource("3_41h2h")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3o02d"]
 radius = 4.4
 
 [node name="AsteroidSmall" instance=ExtResource("1_3jss7")]
 health = 1
+death_effects = Array[Resource("res://Resources/Effect.gd")]([SubResource("Resource_3fyxy")])
 
 [node name="Sprite2D" parent="." index="0"]
 frame = 2

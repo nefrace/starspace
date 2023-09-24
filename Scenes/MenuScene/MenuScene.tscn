@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7r4qcrj5nedy"]
+
+[ext_resource type="Texture2D" uid="uid://tulmpn4rv2hj" path="res://gfx/background.png" id="1_2sish"]
+[ext_resource type="Texture2D" uid="uid://4kgq4g3gx0ns" path="res://Entities/Player/player_ship.png" id="2_we7hj"]
+[ext_resource type="PackedScene" uid="uid://boivggfb3dovi" path="res://Scenes/MenuScene/Menu.tscn" id="3_c4puf"]
+
+[sub_resource type="GDScript" id="GDScript_euspy"]
+script/source = "extends Sprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	position.x += 80 * delta
+"
+
+[sub_resource type="Curve" id="Curve_mkav7"]
+max_value = 3.8
+_data = [Vector2(0, 1), 0.0, 7.13793, 0, 0, Vector2(0.381643, 0.76), -0.92, -0.92, 0, 0, Vector2(1, 0.52), 0.188182, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_k1f2u"]
+curve = SubResource("Curve_mkav7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_trsjx"]
+lifetime_randomness = 0.35
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 17.7
+initial_velocity_max = 33.05
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 3.95
+scale_curve = SubResource("CurveTexture_k1f2u")
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 10.0
+turbulence_noise_speed = Vector3(-30, 0, 0)
+
+[node name="Menu" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_base_scale = Vector2(0.5, 0.5)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(160, 144)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("1_2sish")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(80, 100)
+texture = ExtResource("2_we7hj")
+hframes = 8
+script = SubResource("GDScript_euspy")
+
+[node name="Camera2D" type="Camera2D" parent="Sprite"]
+position = Vector2(0, -28)
+
+[node name="ThrustForwardParticles" type="GPUParticles2D" parent="Sprite"]
+unique_name_in_owner = true
+modulate = Color(0.968627, 0.92549, 0.72549, 1)
+position = Vector2(-10, 0)
+amount = 48
+process_material = SubResource("ParticleProcessMaterial_trsjx")
+
+[node name="Menu" parent="." instance=ExtResource("3_c4puf")]

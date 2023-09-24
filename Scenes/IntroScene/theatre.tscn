@@ -1,0 +1,92 @@
+[gd_scene load_steps=12 format=3 uid="uid://du18t25fa0bk8"]
+
+[ext_resource type="Texture2D" uid="uid://bqobbjuc0a2ls" path="res://Scenes/IntroScene/Starspace_etc/Sprites/SPACE.png" id="1_mewdc"]
+[ext_resource type="PackedScene" uid="uid://dij40ulgnfdwm" path="res://Scenes/IntroScene/TEXT/S.tscn" id="2_rfc5f"]
+[ext_resource type="PackedScene" uid="uid://bo606opf0tyir" path="res://Scenes/IntroScene/TEXT/T.tscn" id="3_y7q2j"]
+[ext_resource type="PackedScene" uid="uid://bskk3e4xs66uj" path="res://Scenes/IntroScene/TEXT/A.tscn" id="4_bem5q"]
+[ext_resource type="PackedScene" uid="uid://cudpobxc060wa" path="res://Scenes/IntroScene/TEXT/R.tscn" id="5_kxxpk"]
+
+[sub_resource type="GDScript" id="GDScript_3t3ed"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05ktw"]
+size = Vector2(145, 45)
+
+[sub_resource type="Animation" id="Animation_yuf20"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_h5xjp"]
+resource_name = "start_huinya"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -56)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r75o8"]
+_data = {
+"RESET": SubResource("Animation_yuf20"),
+"start_huinya": SubResource("Animation_h5xjp")
+}
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_aicbg"]
+bounce = 0.2
+
+[node name="Theatre" type="Node2D"]
+script = SubResource("GDScript_3t3ed")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(86, 169)
+texture = ExtResource("1_mewdc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(85.5, 169.5)
+shape = SubResource("RectangleShape2D_05ktw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody2D"]
+autoplay = "start_huinya"
+speed_scale = 0.2
+libraries = {
+"": SubResource("AnimationLibrary_r75o8")
+}
+
+[node name="RigidBody2D" parent="." instance=ExtResource("2_rfc5f")]
+position = Vector2(31, -1142)
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_aicbg")
+
+[node name="RigidBody2D2" parent="." instance=ExtResource("3_y7q2j")]
+position = Vector2(65, -1148)
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_aicbg")
+
+[node name="RigidBody2D3" parent="." instance=ExtResource("4_bem5q")]
+position = Vector2(111, -1141)
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_aicbg")
+
+[node name="RigidBody2D4" parent="." instance=ExtResource("5_kxxpk")]
+position = Vector2(151, -1131)
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_aicbg")

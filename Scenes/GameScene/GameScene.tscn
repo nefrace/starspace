@@ -1,0 +1,75 @@
+[gd_scene load_steps=15 format=3 uid="uid://gmbo34pgy1rv"]
+
+[ext_resource type="Script" path="res://Scenes/GameScene/World.gd" id="1_gsdxg"]
+[ext_resource type="PackedScene" uid="uid://dwjf8f36u4nc3" path="res://Entities/Player/player.tscn" id="1_q4ixd"]
+[ext_resource type="Texture2D" uid="uid://tulmpn4rv2hj" path="res://gfx/background.png" id="1_xcrb8"]
+[ext_resource type="PackedScene" uid="uid://73gnola5a1iq" path="res://Entities/PortalFrame/PortalFrame.tscn" id="4_mi7q7"]
+[ext_resource type="PackedScene" uid="uid://2y7wo7x6egee" path="res://UI/UI.tscn" id="6_228jn"]
+[ext_resource type="PackedScene" uid="uid://cix1r1er1h2ka" path="res://Entities/Mothership/Mothership.tscn" id="6_ex3ys"]
+[ext_resource type="PackedScene" uid="uid://88bl2ts65jpg" path="res://Entities/DebrisSpawner/debris_spawner.tscn" id="7_c0fly"]
+[ext_resource type="PackedScene" uid="uid://d2sggtygn8w10" path="res://Entities/Debris/asteroid_big.tscn" id="8_5y8we"]
+[ext_resource type="PackedScene" uid="uid://bwlhptb81hef7" path="res://Entities/Debris/asteroid_mid.tscn" id="9_bkho2"]
+[ext_resource type="PackedScene" uid="uid://dt7tlv6264u0g" path="res://Entities/Debris/asteroid_small.tscn" id="10_383ob"]
+[ext_resource type="PackedScene" uid="uid://b47si0ho2mp0i" path="res://Entities/Debris/garbage_0.tscn" id="11_i56ta"]
+[ext_resource type="PackedScene" uid="uid://devvu0u7skb3w" path="res://Entities/Debris/garbage_1.tscn" id="12_aj8cp"]
+[ext_resource type="PackedScene" uid="uid://dxt2w4pbnrm4w" path="res://Entities/Debris/garbage_2.tscn" id="13_dit1c"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_75moq"]
+normal = Vector2(1, 0)
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_gsdxg")
+
+[node name="Bounds" type="StaticBody2D" parent="." groups=["bounds"]]
+collision_layer = 32768
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
+shape = SubResource("WorldBoundaryShape2D_75moq")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Bounds"]
+rotation = 1.57079
+shape = SubResource("WorldBoundaryShape2D_75moq")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(480, 0)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_75moq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(0, 432)
+rotation = -1.57079
+shape = SubResource("WorldBoundaryShape2D_75moq")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_base_scale = Vector2(0.5, 0.5)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(160, 144)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("1_xcrb8")
+centered = false
+
+[node name="Player" parent="." instance=ExtResource("1_q4ixd")]
+position = Vector2(218, 89)
+bounce_multiplier = 0.865
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = 0
+limit_top = 0
+limit_right = 480
+limit_bottom = 432
+
+[node name="PortalFrame" parent="." instance=ExtResource("4_mi7q7")]
+position = Vector2(216, 14)
+spawn_timer = 45
+mothership = ExtResource("6_ex3ys")
+
+[node name="Control" parent="." instance=ExtResource("6_228jn")]
+
+[node name="DebrisSpawner" parent="." instance=ExtResource("7_c0fly")]
+position = Vector2(0, 4)
+max_debris = 12
+mean_interval = 2.5
+debris_list = Array[PackedScene]([ExtResource("8_5y8we"), ExtResource("9_bkho2"), ExtResource("10_383ob"), ExtResource("11_i56ta"), ExtResource("12_aj8cp"), ExtResource("13_dit1c")])

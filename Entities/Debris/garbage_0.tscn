@@ -1,15 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://b47si0ho2mp0i"]
+[gd_scene load_steps=8 format=3 uid="uid://b47si0ho2mp0i"]
 
 [ext_resource type="PackedScene" uid="uid://my8gbw8v4brm" path="res://Entities/Debris/basic_debris.tscn" id="1_2h2mv"]
+[ext_resource type="Script" path="res://Resources/Explosion.gd" id="2_f87q7"]
 [ext_resource type="Texture2D" uid="uid://c58tby7mv2jss" path="res://Entities/Debris/garbage0.png" id="2_iv0t0"]
+[ext_resource type="AudioStream" uid="uid://cr080wqn4nkn2" path="res://sfx/explosion2.wav" id="3_dok4h"]
+[ext_resource type="AudioStream" uid="uid://bg36iho7n2di1" path="res://sfx/hit.wav" id="4_jowgd"]
+
+[sub_resource type="Resource" id="Resource_bd540"]
+script = ExtResource("2_f87q7")
+radius = 32.735
+time = 0.3
+sfx = ExtResource("3_dok4h")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mgtl5"]
 radius = 19.105
 
 [node name="Garbage0" instance=ExtResource("1_2h2mv")]
-health = 4
+health = 6
 randomize_rotation = true
 randomize_flip = true
+death_effects = Array[Resource("res://Resources/Effect.gd")]([SubResource("Resource_bd540")])
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(1, 1)
@@ -18,3 +28,8 @@ hframes = 2
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_mgtl5")
+
+[node name="HitPlayer" type="AudioStreamPlayer2D" parent="." index="3"]
+stream = ExtResource("4_jowgd")
+volume_db = -7.488
+bus = &"Sounds"

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://4uta65dy0los"
+path="res://.godot/imported/Nobodyhere - concentrate.mp3-ac5606c6e56c00fd903967f1c1350f24.mp3str"
+
+[deps]
+
+source_file="res://gfx/Nobodyhere - concentrate.mp3"
+dest_files=["res://.godot/imported/Nobodyhere - concentrate.mp3-ac5606c6e56c00fd903967f1c1350f24.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

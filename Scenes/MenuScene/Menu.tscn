@@ -1,0 +1,120 @@
+[gd_scene load_steps=7 format=3 uid="uid://boivggfb3dovi"]
+
+[ext_resource type="Script" path="res://Scenes/MenuScene/Menu.gd" id="1_28wt3"]
+[ext_resource type="Theme" uid="uid://bdsdemsjrustx" path="res://UI/theme.theme" id="1_bdl8s"]
+[ext_resource type="PackedScene" uid="uid://gmbo34pgy1rv" path="res://Scenes/GameScene/GameScene.tscn" id="2_8g510"]
+[ext_resource type="Texture2D" uid="uid://vomk73lei03p" path="res://gfx/nfrc.png" id="4_jmjlm"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_k03th"]
+device = -1
+keycode = 69
+unicode = 101
+
+[sub_resource type="Shortcut" id="Shortcut_opa3q"]
+events = [SubResource("InputEventKey_k03th")]
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource("1_28wt3")
+game_scene = ExtResource("2_8g510")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_bdl8s")
+
+[node name="Main" type="VBoxContainer" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 1
+
+[node name="Start" type="Button" parent="Control/Main"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../OptionsButton")
+shortcut = SubResource("Shortcut_opa3q")
+text = "START"
+flat = true
+
+[node name="OptionsButton" type="Button" parent="Control/Main"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../Start")
+focus_neighbor_bottom = NodePath("../Quit")
+text = "OPTIONS"
+flat = true
+
+[node name="Quit" type="Button" parent="Control/Main"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../Start")
+text = "QUIT"
+flat = true
+
+[node name="Options" type="VBoxContainer" parent="Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 1
+
+[node name="Scale" type="Button" parent="Control/Options"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../Back")
+focus_neighbor_bottom = NodePath("../Sounds")
+shortcut = SubResource("Shortcut_opa3q")
+text = "SCALE: 1x"
+flat = true
+
+[node name="Sounds" type="Button" parent="Control/Options"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../Scale")
+focus_neighbor_bottom = NodePath("../Music")
+text = "SOUND: 5"
+flat = true
+
+[node name="Music" type="Button" parent="Control/Options"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../Sounds")
+focus_neighbor_bottom = NodePath("../Back")
+text = "MUSIC: 5"
+flat = true
+
+[node name="Back" type="Button" parent="Control/Options"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../Sounds")
+focus_neighbor_bottom = NodePath("../Scale")
+text = "BACK
+"
+flat = true
+
+[node name="Nfrc" type="Sprite2D" parent="."]
+modulate = Color(0.968627, 0.92549, 0.72549, 1)
+position = Vector2(24, 139)
+texture = ExtResource("4_jmjlm")
+
+[connection signal="pressed" from="Control/Main/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Control/Main/OptionsButton" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Control/Main/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Control/Options/Scale" to="." method="_on_scale_pressed"]
+[connection signal="pressed" from="Control/Options/Sounds" to="." method="_on_sounds_pressed"]
+[connection signal="pressed" from="Control/Options/Music" to="." method="_on_music_pressed"]
+[connection signal="pressed" from="Control/Options/Back" to="." method="_on_back_pressed"]

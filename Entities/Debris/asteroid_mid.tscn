@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwlhptb81hef7"]
+[gd_scene load_steps=6 format=3 uid="uid://bwlhptb81hef7"]
 
 [ext_resource type="PackedScene" uid="uid://d2sggtygn8w10" path="res://Entities/Debris/asteroid_big.tscn" id="1_cdj6y"]
 [ext_resource type="Script" path="res://Resources/Explosion.gd" id="2_1nqlb"]
+[ext_resource type="AudioStream" uid="uid://5ji817f4qc2w" path="res://sfx/explosion1.wav" id="3_ioiry"]
 
 [sub_resource type="Resource" id="Resource_cfd33"]
 script = ExtResource("2_1nqlb")
 radius = 12.465
 time = 0.3
+sfx = ExtResource("3_ioiry")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p5teg"]
 radius = 7.25

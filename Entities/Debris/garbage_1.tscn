@@ -1,12 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://devvu0u7skb3w"]
+[gd_scene load_steps=7 format=3 uid="uid://devvu0u7skb3w"]
 
 [ext_resource type="PackedScene" uid="uid://b47si0ho2mp0i" path="res://Entities/Debris/garbage_0.tscn" id="1_qikhb"]
+[ext_resource type="Script" path="res://Resources/Explosion.gd" id="2_7agno"]
 [ext_resource type="Texture2D" uid="uid://bpovqhjlu6jip" path="res://Entities/Debris/garbage1.png" id="2_g57yk"]
+[ext_resource type="AudioStream" uid="uid://cr080wqn4nkn2" path="res://sfx/explosion2.wav" id="3_83le0"]
+
+[sub_resource type="Resource" id="Resource_hq6o0"]
+script = ExtResource("2_7agno")
+radius = 32.995
+time = 0.3
+sfx = ExtResource("3_83le0")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uw0ib"]
 radius = 23.65
 
 [node name="Garbage1" instance=ExtResource("1_qikhb")]
+health = 7
+death_effects = Array[Resource("res://Resources/Effect.gd")]([SubResource("Resource_hq6o0")])
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_g57yk")

@@ -1,0 +1,153 @@
+[gd_scene load_steps=2 format=3 uid="uid://p038i84en7p8"]
+
+[ext_resource type="Script" path="res://Autoload/SceneManager/SceneManager.gd" id="1_sbi3e"]
+
+[node name="SceneManager" type="CanvasLayer"]
+layer = 78
+script = ExtResource("1_sbi3e")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer1" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+offset_left = -180.0
+offset_top = -5.0
+offset_right = -9.0
+offset_bottom = 21.0
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="Control/HBoxContainer1"]
+self_modulate = Color(0.160784, 0.121569, 0.137255, 1)
+custom_minimum_size = Vector2(160, 26)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="Control/HBoxContainer1"]
+self_modulate = Color(0.741176, 0.313726, 0.184314, 1)
+custom_minimum_size = Vector2(8.27, 0)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="Control/HBoxContainer1"]
+self_modulate = Color(0.968627, 0.92549, 0.72549, 1)
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+offset_left = -180.0
+offset_top = 20.0
+offset_right = -9.0
+offset_bottom = 46.0
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="Control/HBoxContainer2"]
+self_modulate = Color(0.160784, 0.121569, 0.137255, 1)
+custom_minimum_size = Vector2(160, 26)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="Control/HBoxContainer2"]
+self_modulate = Color(0.741176, 0.313726, 0.184314, 1)
+custom_minimum_size = Vector2(8.27, 0)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="Control/HBoxContainer2"]
+self_modulate = Color(0.968627, 0.92549, 0.72549, 1)
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+offset_left = -180.0
+offset_top = 46.0
+offset_right = -9.0
+offset_bottom = 72.0
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="Control/HBoxContainer3"]
+self_modulate = Color(0.160784, 0.121569, 0.137255, 1)
+custom_minimum_size = Vector2(160, 26)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="Control/HBoxContainer3"]
+self_modulate = Color(0.741176, 0.313726, 0.184314, 1)
+custom_minimum_size = Vector2(8.27, 0)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="Control/HBoxContainer3"]
+self_modulate = Color(0.968627, 0.92549, 0.72549, 1)
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+offset_left = -180.0
+offset_top = 72.0
+offset_right = -9.0
+offset_bottom = 98.0
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="Control/HBoxContainer4"]
+self_modulate = Color(0.160784, 0.121569, 0.137255, 1)
+custom_minimum_size = Vector2(160, 26)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="Control/HBoxContainer4"]
+self_modulate = Color(0.741176, 0.313726, 0.184314, 1)
+custom_minimum_size = Vector2(8.27, 0)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="Control/HBoxContainer4"]
+self_modulate = Color(0.968627, 0.92549, 0.72549, 1)
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+offset_left = -180.0
+offset_top = 98.0
+offset_right = -9.0
+offset_bottom = 124.0
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="Control/HBoxContainer5"]
+self_modulate = Color(0.160784, 0.121569, 0.137255, 1)
+custom_minimum_size = Vector2(160, 26)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="Control/HBoxContainer5"]
+self_modulate = Color(0.741176, 0.313726, 0.184314, 1)
+custom_minimum_size = Vector2(8.27, 0)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="Control/HBoxContainer5"]
+self_modulate = Color(0.968627, 0.92549, 0.72549, 1)
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+offset_left = -180.0
+offset_top = 124.0
+offset_right = -9.0
+offset_bottom = 150.0
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="Control/HBoxContainer6"]
+self_modulate = Color(0.160784, 0.121569, 0.137255, 1)
+custom_minimum_size = Vector2(160, 26)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="Control/HBoxContainer6"]
+self_modulate = Color(0.741176, 0.313726, 0.184314, 1)
+custom_minimum_size = Vector2(8.27, 0)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="Control/HBoxContainer6"]
+self_modulate = Color(0.968627, 0.92549, 0.72549, 1)
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2

@@ -17,3 +17,7 @@ script = ExtResource("1_7j0hu")
 radius = 18.235
 lifetime = 0.3
 color = Color(0.968627, 0.92549, 0.72549, 1)
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+volume_db = -1.76
+bus = &"Sounds"

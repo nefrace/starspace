@@ -26,5 +26,6 @@ func _physics_process(delta):
 		expl.global_position = global_position 
 		expl.radius = 6
 		expl.lifetime = 0.2
+		expl.sfx = preload("res://sfx/shoothit.wav")
 		add_sibling(expl)
 		queue_free()

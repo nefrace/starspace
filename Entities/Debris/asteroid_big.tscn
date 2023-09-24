@@ -1,11 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2sggtygn8w10"]
+[gd_scene load_steps=7 format=3 uid="uid://d2sggtygn8w10"]
 
 [ext_resource type="PackedScene" uid="uid://my8gbw8v4brm" path="res://Entities/Debris/basic_debris.tscn" id="1_e5few"]
+[ext_resource type="Script" path="res://Resources/Explosion.gd" id="2_b4chq"]
 [ext_resource type="Texture2D" uid="uid://cgisfc475fymq" path="res://Entities/Debris/asteroids.png" id="2_cjeb6"]
+[ext_resource type="AudioStream" uid="uid://bg36iho7n2di1" path="res://sfx/hit.wav" id="3_ey2bl"]
+[ext_resource type="AudioStream" uid="uid://cr080wqn4nkn2" path="res://sfx/explosion2.wav" id="3_gr4rx"]
+
+[sub_resource type="Resource" id="Resource_okylj"]
+script = ExtResource("2_b4chq")
+radius = 16.0
+time = 0.3
+sfx = ExtResource("3_gr4rx")
 
 [node name="AsteroidBig" instance=ExtResource("1_e5few")]
+death_effects = Array[Resource("res://Resources/Effect.gd")]([SubResource("Resource_okylj")])
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(1, 1)
 texture = ExtResource("2_cjeb6")
 hframes = 3
+
+[node name="HitPlayer" type="AudioStreamPlayer2D" parent="." index="3"]
+stream = ExtResource("3_ey2bl")
+volume_db = -7.488
+bus = &"Sounds"

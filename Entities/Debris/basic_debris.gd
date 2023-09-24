@@ -27,7 +27,7 @@ func _process(delta):
 	if slowdown:
 		velocity = velocity.move_toward(Vector2.ZERO, 15.0 * delta)
 		
-	if position.x < -100 || position.x > 580 || position.y < 100 || position.x > 532:
+	if position.x < -200 || position.x > 680 || position.y < -200 || position.x > 632:
 		queue_free()
 
 func receive_damage(dmg: int, from: Node2D):
@@ -35,8 +35,11 @@ func receive_damage(dmg: int, from: Node2D):
 	if health <= 0:
 		die()
 		queue_free()
+		Events.debris_destroyed.emit()
 
-
+func _exit_tree():
+	print(position)
+	
 func _on_rail_field_area_area_entered(area):
 	slowdown = true
 

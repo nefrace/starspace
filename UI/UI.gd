@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @export var menu_scene: PackedScene
+@export var root_node: Node
 var debris_in_line: bool = false
 var seconds_in_game: int = 0:
 	set(value):
@@ -31,6 +32,15 @@ func _ready():
 	Events.player_dead.connect(on_player_dead)
 	Events.rep_is_zero.connect(on_rep_zero)
 
+func _process(_delta):
+	var t := get_tree()
+	if Input.is_action_just_pressed("ui_cancel"):
+		t.paused = !t.paused
+		%Paused.visible = t.paused
+	if Input.is_action_just_pressed("ui_accept") && t.paused:
+		MusicPlayer.stop()
+		t.paused = false
+		SceneManager.switch_to_file("res://Scenes/MenuScene/MenuScene.tscn")
 
 func on_timer_timeout():
 	seconds_in_game += 1

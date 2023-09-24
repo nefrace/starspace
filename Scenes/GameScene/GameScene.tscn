@@ -66,7 +66,8 @@ position = Vector2(216, 14)
 spawn_timer = 45
 mothership = ExtResource("6_ex3ys")
 
-[node name="Control" parent="." instance=ExtResource("6_228jn")]
+[node name="Control" parent="." node_paths=PackedStringArray("root_node") instance=ExtResource("6_228jn")]
+root_node = NodePath("..")
 
 [node name="DebrisSpawner" parent="." instance=ExtResource("7_c0fly")]
 position = Vector2(0, 4)

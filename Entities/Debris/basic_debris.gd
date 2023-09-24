@@ -37,8 +37,6 @@ func receive_damage(dmg: int, from: Node2D):
 		queue_free()
 		Events.debris_destroyed.emit()
 
-func _exit_tree():
-	print(position)
 	
 func _on_rail_field_area_area_entered(area):
 	slowdown = true

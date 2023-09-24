@@ -62,3 +62,13 @@ func _on_music_pressed():
 
 func _on_sounds_pressed():
 	pass # Replace with function body.
+
+
+func _on_nfrc_gui_input(event):
+	if event is InputEventMouseButton:
+		OS.shell_open("https://nefrace.itch.io")
+
+
+func _on_nobody_gui_input(event):
+	if event is InputEventMouseButton:
+		OS.shell_open("https://n0b0dyhere.itch.io/")

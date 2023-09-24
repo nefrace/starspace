@@ -35,12 +35,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 1
+mouse_filter = 2
 
 [node name="Start" type="Button" parent="Control/Main"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../Quit")
 focus_neighbor_bottom = NodePath("../OptionsButton")
+mouse_filter = 2
 shortcut = SubResource("Shortcut_opa3q")
 text = "START"
 flat = true
@@ -50,6 +52,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../Start")
 focus_neighbor_bottom = NodePath("../Quit")
+mouse_filter = 2
 text = "OPTIONS"
 flat = true
 
@@ -58,6 +61,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../OptionsButton")
 focus_neighbor_bottom = NodePath("../Start")
+mouse_filter = 2
 text = "QUIT"
 flat = true
 
@@ -71,12 +75,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 1
+mouse_filter = 2
 
 [node name="Scale" type="Button" parent="Control/Options"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../Back")
 focus_neighbor_bottom = NodePath("../Sounds")
+mouse_filter = 2
 shortcut = SubResource("Shortcut_opa3q")
 text = "SCALE: 1x"
 flat = true
@@ -86,6 +92,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../Scale")
 focus_neighbor_bottom = NodePath("../Music")
+mouse_filter = 2
 text = "SOUND: 5"
 flat = true
 
@@ -94,6 +101,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../Sounds")
 focus_neighbor_bottom = NodePath("../Back")
+mouse_filter = 2
 text = "MUSIC: 5"
 flat = true
 
@@ -102,14 +110,38 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../Sounds")
 focus_neighbor_bottom = NodePath("../Scale")
+mouse_filter = 2
 text = "BACK
 "
 flat = true
 
-[node name="Nfrc" type="Sprite2D" parent="."]
+[node name="Nfrc" type="TextureRect" parent="Control"]
 modulate = Color(0.968627, 0.92549, 0.72549, 1)
-position = Vector2(24, 139)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -7.0
+offset_right = 43.0
+grow_vertical = 0
+mouse_filter = 0
+mouse_default_cursor_shape = 2
 texture = ExtResource("4_jmjlm")
+
+[node name="Nobody" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -13.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+text = "NobodyHere"
 
 [connection signal="pressed" from="Control/Main/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Control/Main/OptionsButton" to="." method="_on_options_pressed"]
@@ -118,3 +150,5 @@ texture = ExtResource("4_jmjlm")
 [connection signal="pressed" from="Control/Options/Sounds" to="." method="_on_sounds_pressed"]
 [connection signal="pressed" from="Control/Options/Music" to="." method="_on_music_pressed"]
 [connection signal="pressed" from="Control/Options/Back" to="." method="_on_back_pressed"]
+[connection signal="gui_input" from="Control/Nfrc" to="." method="_on_nfrc_gui_input"]
+[connection signal="gui_input" from="Control/Nobody" to="." method="_on_nobody_gui_input"]

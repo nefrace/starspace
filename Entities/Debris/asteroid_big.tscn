@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2sggtygn8w10"]
+
+[ext_resource type="PackedScene" uid="uid://my8gbw8v4brm" path="res://Entities/Debris/basic_debris.tscn" id="1_e5few"]
+[ext_resource type="Texture2D" uid="uid://cgisfc475fymq" path="res://Entities/Debris/asteroids.png" id="2_cjeb6"]
+
+[node name="AsteroidBig" instance=ExtResource("1_e5few")]
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(1, 1)
+texture = ExtResource("2_cjeb6")
+hframes = 3

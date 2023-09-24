@@ -1,7 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cix1r1er1h2ka"]
+[gd_scene load_steps=6 format=3 uid="uid://cix1r1er1h2ka"]
 
 [ext_resource type="Texture2D" uid="uid://yjs6ydevjtst" path="res://Entities/Mothership/GiantShip.png" id="1_7aolk"]
 [ext_resource type="Script" path="res://Entities/Mothership/Mothership.gd" id="1_gi7hy"]
+
+[sub_resource type="Curve" id="Curve_g8u18"]
+max_value = 2.35
+_data = [Vector2(0, 1), 0.0, 5.98807, 0, 0, Vector2(1, 0.272105), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jc7p1"]
+curve = SubResource("Curve_g8u18")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u07dm"]
 lifetime_randomness = 0.35
@@ -17,13 +25,14 @@ orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_min = 5.25
 scale_max = 9.28
+scale_curve = SubResource("CurveTexture_jc7p1")
 turbulence_noise_strength = 20.0
 turbulence_noise_scale = 10.0
 turbulence_noise_speed = Vector3(-30, 0, 0)
 
-[node name="Mothership" type="CharacterBody2D"]
+[node name="Mothership" type="Area2D"]
 collision_layer = 0
-collision_mask = 0
+collision_mask = 34
 script = ExtResource("1_gi7hy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

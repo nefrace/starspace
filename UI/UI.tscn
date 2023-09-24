@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://UI/UI.gd" id="1_bh32b"]
 [ext_resource type="Theme" uid="uid://bdsdemsjrustx" path="res://UI/theme.theme" id="1_xlmvw"]
 
-[node name="Control" type="CanvasLayer"]
+[node name="UI" type="CanvasLayer"]
 script = ExtResource("1_bh32b")
 
 [node name="Control" type="Control" parent="."]
@@ -13,8 +13,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_xlmvw")
 
-[node name="Panel" type="Panel" parent="Control"]
+[node name="BotomPanel" type="Panel" parent="Control"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 1
 anchors_preset = 12
@@ -23,37 +24,82 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("1_xlmvw")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/BotomPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 2
 
-[node name="VSeparator" type="VSeparator" parent="Control/Panel/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="Control/BotomPanel/HBoxContainer"]
 layout_mode = 2
 
-[node name="Health" type="Label" parent="Control/Panel/HBoxContainer"]
+[node name="Health" type="Label" parent="Control/BotomPanel/HBoxContainer"]
 unique_name_in_owner = true
 modulate = Color(0.160784, 0.121569, 0.137255, 1)
 layout_mode = 2
 text = "HEALTH"
 
-[node name="VSeparator2" type="VSeparator" parent="Control/Panel/HBoxContainer"]
+[node name="VSeparator2" type="VSeparator" parent="Control/BotomPanel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PortalTimerLabel" type="Label" parent="Control/Panel/HBoxContainer"]
+[node name="DebrisWarning" type="Label" parent="Control/BotomPanel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.741176, 0.313726, 0.184314, 1)
+text = "!!!"
+
+[node name="DebrisWarningTimer" type="Timer" parent="Control/BotomPanel/HBoxContainer/DebrisWarning"]
+wait_time = 0.3
+autostart = true
+
+[node name="PortalTimerLabel" type="Label" parent="Control/BotomPanel/HBoxContainer"]
 modulate = Color(0.160784, 0.121569, 0.137255, 1)
 layout_mode = 2
 text = "JUMP IN: "
 
-[node name="PortalTimer" type="Label" parent="Control/Panel/HBoxContainer"]
+[node name="PortalTimer" type="Label" parent="Control/BotomPanel/HBoxContainer"]
 unique_name_in_owner = true
 modulate = Color(0.160784, 0.121569, 0.137255, 1)
 layout_mode = 2
 text = "30"
+
+[node name="TopPanel" type="Panel" parent="Control"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TopPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 2
+
+[node name="VSeparator" type="VSeparator" parent="Control/TopPanel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/TopPanel/HBoxContainer"]
+modulate = Color(0.160784, 0.121569, 0.137255, 1)
+layout_mode = 2
+theme_override_constants/line_spacing = -3325
+text = "REPUTATION"
+
+[node name="Reputation" type="ProgressBar" parent="Control/TopPanel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+value = 100.0
+
+[connection signal="timeout" from="Control/BotomPanel/HBoxContainer/DebrisWarning/DebrisWarningTimer" to="." method="_on_debris_warning_timer_timeout"]

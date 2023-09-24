@@ -1,30 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwfubn1xukra5"]
+[gd_scene load_steps=7 format=3 uid="uid://my8gbw8v4brm"]
 
-[ext_resource type="Script" path="res://Entities/Asteroid/Asteroid.gd" id="1_pfjhc"]
-[ext_resource type="Texture2D" uid="uid://cgisfc475fymq" path="res://Entities/Asteroid/asteroids.png" id="2_6tbie"]
-[ext_resource type="Script" path="res://Resources/Explosion.gd" id="2_bft1s"]
+[ext_resource type="Script" path="res://Entities/Debris/basic_debris.gd" id="1_l5rvv"]
+[ext_resource type="Script" path="res://Resources/Explosion.gd" id="2_r86dk"]
+[ext_resource type="Texture2D" uid="uid://cjckyw74v6px3" path="res://icon.svg" id="3_rqw7v"]
 
 [sub_resource type="Resource" id="Resource_u2duo"]
-script = ExtResource("2_bft1s")
+script = ExtResource("2_r86dk")
 radius = 16.0
 time = 0.3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u0ic4"]
-radius = 11.0
+radius = 13.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndcka"]
-size = Vector2(26, 28)
+size = Vector2(38, 40)
 
-[node name="Asteroid" type="CharacterBody2D"]
+[node name="BasicDebris" type="CharacterBody2D" groups=["debris"]]
 collision_layer = 3
 collision_mask = 3
 motion_mode = 1
-script = ExtResource("1_pfjhc")
+script = ExtResource("1_l5rvv")
 death_effects = Array[Resource("res://Resources/Effect.gd")]([SubResource("Resource_u2duo")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_6tbie")
-hframes = 3
+scale = Vector2(0.185, 0.185)
+texture = ExtResource("3_rqw7v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_u0ic4")
@@ -33,7 +33,6 @@ debug_color = Color(0.666667, 0.509804, 0.129412, 0.419608)
 [node name="RailFieldArea" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 8
-monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RailFieldArea"]
 shape = SubResource("RectangleShape2D_ndcka")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b47si0ho2mp0i"]
+
+[ext_resource type="PackedScene" uid="uid://my8gbw8v4brm" path="res://Entities/Debris/basic_debris.tscn" id="1_2h2mv"]
+[ext_resource type="Texture2D" uid="uid://c58tby7mv2jss" path="res://Entities/Debris/garbage0.png" id="2_iv0t0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mgtl5"]
+radius = 19.105
+
+[node name="Garbage0" instance=ExtResource("1_2h2mv")]
+health = 4
+randomize_rotation = true
+randomize_flip = true
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(1, 1)
+texture = ExtResource("2_iv0t0")
+hframes = 2
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_mgtl5")

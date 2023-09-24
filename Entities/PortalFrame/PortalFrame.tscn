@@ -1,13 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://73gnola5a1iq"]
+[gd_scene load_steps=9 format=3 uid="uid://73gnola5a1iq"]
 
 [ext_resource type="Script" path="res://Entities/PortalFrame/PortalFrame.gd" id="1_du0y4"]
 [ext_resource type="Texture2D" uid="uid://cggamrhbk6rvf" path="res://Entities/PortalFrame/portal_frame.png" id="1_ysooh"]
+[ext_resource type="Texture2D" uid="uid://7cl3yepr3nlw" path="res://Entities/PortalFrame/particle_small.png" id="3_qdd14"]
+[ext_resource type="Texture2D" uid="uid://cohwchd6fbhvw" path="res://Entities/PortalFrame/particle_big.png" id="4_tkhwk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dp4bd"]
 size = Vector2(112, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ij8dm"]
-size = Vector2(88, 526)
+size = Vector2(70, 423)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u7xgm"]
 lifetime_randomness = 0.33
@@ -16,7 +18,19 @@ emission_box_extents = Vector3(44.705, 480, 1)
 particle_flag_disable_z = true
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
-turbulence_enabled = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_olj7i"]
+lifetime_randomness = 0.33
+emission_shape = 3
+emission_box_extents = Vector3(44.705, 20, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, -18.5, 0)
+initial_velocity_min = 104.34
+initial_velocity_max = 104.34
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
 
 [node name="PortalFrame" type="Node2D"]
 position = Vector2(0, 3)
@@ -44,13 +58,24 @@ collision_layer = 8
 collision_mask = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RailField"]
-position = Vector2(0, 249)
+position = Vector2(0, 197.5)
 shape = SubResource("RectangleShape2D_ij8dm")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="RailField"]
-modulate = Color(0.741176, 0.313726, 0.184314, 1)
+[node name="ParticlesBasic" type="GPUParticles2D" parent="RailField"]
 position = Vector2(0, 249)
 amount = 128
 process_material = SubResource("ParticleProcessMaterial_u7xgm")
+texture = ExtResource("3_qdd14")
 lifetime = 3.9
+fixed_fps = 5
 visibility_rect = Rect2(-100, -280, 199.255, 560)
+
+[node name="ParticlesActive" type="GPUParticles2D" parent="RailField"]
+emitting = false
+amount = 178
+process_material = SubResource("ParticleProcessMaterial_olj7i")
+texture = ExtResource("4_tkhwk")
+lifetime = 3.9
+visibility_rect = Rect2(-100, 0, 199.255, 560)
+
+[connection signal="body_entered" from="RailField" to="." method="_on_rail_field_body_entered"]
